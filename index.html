@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Music AI Research — Yungang Yi</title>
+  <meta name="description" content="Research on AI-powered symbolic music generation by Yungang Yi. Explore projects on long-term expressive music generation using transformer architectures." />
+  <link rel="stylesheet" href="index.css" />
+  <!-- Favicon (music note emoji as SVG) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🎵</text></svg>" />
+</head>
+<body>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="hero">
+    <canvas class="hero-waveform" id="waveformCanvas"></canvas>
+
+    <div class="hero-content">
+      <span class="hero-label">
+        <span class="dot"></span>
+        Research Portfolio
+      </span>
+
+      <h1>
+        <span class="gradient-text">Music AI</span><br />
+        Research
+      </h1>
+
+      <p class="hero-description">
+        Exploring the intersection of artificial intelligence and music — building transformer-based models that generate long-term, expressive symbolic music.
+      </p>
+
+      <div class="hero-author">
+        <a href="https://www.linkedin.com/in/lukeyi" target="_blank" rel="noopener">Yungang Yi</a>
+        <span class="separator"></span>
+        <span>AUT University, New Zealand</span>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="chevron"></div>
+    </div>
+  </section>
+
+  <!-- ========== PROJECTS ========== -->
+  <section class="projects" id="projects">
+    <div class="section-header reveal">
+      <h2>Research Projects</h2>
+      <p>Published and ongoing work in AI-powered symbolic music generation.</p>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- Card 1: PerceiverS -->
+      <article class="project-card reveal">
+        <div class="card-icon">🎹</div>
+        <span class="card-badge badge-published">Published · IEEE TASLP 2025</span>
+        <h3 class="card-title">PerceiverS</h3>
+        <p class="card-description">
+          A Multi-Scale Perceiver with Effective Segmentation for Long-Term Expressive Symbolic Music Generation. PerceiverS builds on the Perceiver AR architecture with progressive context expansion and multi-scale attention to capture both long-term structure and short-term expression.
+        </p>
+        <div class="card-meta">
+          <span class="meta-tag">Transformer</span>
+          <span class="meta-tag">Cross-Attention</span>
+          <span class="meta-tag">Symbolic Music</span>
+          <span class="meta-tag">Long-Term Structure</span>
+        </div>
+        <a href="https://perceivers.github.io" class="card-link" target="_blank" rel="noopener">
+          View Project <span class="arrow">→</span>
+        </a>
+      </article>
+
+      <!-- Card 2: Recurrence -->
+      <article class="project-card reveal">
+        <div class="card-icon">🔁</div>
+        <span class="card-badge badge-ongoing">Ongoing Research</span>
+        <h3 class="card-title">Recurrence</h3>
+        <p class="card-description">
+          Investigating recurrence-based mechanisms for symbolic music generation. This project explores novel approaches to modelling temporal dependencies and recurring musical patterns using recurrence-augmented architectures.
+        </p>
+        <div class="card-meta">
+          <span class="meta-tag">Recurrence</span>
+          <span class="meta-tag">Temporal Modelling</span>
+          <span class="meta-tag">Music Generation</span>
+        </div>
+        <a href="./recurrence" class="card-link">
+          View Project <span class="arrow">→</span>
+        </a>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/lukeyi" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://academics.aut.ac.nz" target="_blank" rel="noopener">AUT University</a>
+        <a href="https://scholar.google.com" target="_blank" rel="noopener">Google Scholar</a>
+      </div>
+      <p class="footer-copy">© 2025 Yungang Yi. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ========== Scripts ========== -->
+  <script>
+    /* --- Scroll Reveal --- */
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 120);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => observer.observe(el));
+
+    /* --- Waveform Canvas --- */
+    (function () {
+      const canvas = document.getElementById('waveformCanvas');
+      const ctx = canvas.getContext('2d');
+      let width, height, lines;
+
+      function resize() {
+        width = canvas.width = canvas.offsetWidth * devicePixelRatio;
+        height = canvas.height = canvas.offsetHeight * devicePixelRatio;
+        ctx.scale(devicePixelRatio, devicePixelRatio);
+        initLines();
+      }
+
+      function initLines() {
+        const count = 5;
+        lines = Array.from({ length: count }, (_, i) => ({
+          y: (canvas.offsetHeight / (count + 1)) * (i + 1),
+          amplitude: 20 + Math.random() * 30,
+          frequency: 0.003 + Math.random() * 0.004,
+          speed: 0.008 + Math.random() * 0.012,
+          phase: Math.random() * Math.PI * 2,
+          alpha: 0.15 + Math.random() * 0.2
+        }));
+      }
+
+      let t = 0;
+      function draw() {
+        ctx.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
+        lines.forEach(line => {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(124, 92, 252, ${line.alpha})`;
+          ctx.lineWidth = 1.5;
+          for (let x = 0; x < canvas.offsetWidth; x += 2) {
+            const y = line.y + Math.sin(x * line.frequency + t * line.speed + line.phase) * line.amplitude;
+            x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+        });
+        t++;
+        requestAnimationFrame(draw);
+      }
+
+      window.addEventListener('resize', () => {
+        canvas.width = 0;
+        canvas.height = 0;
+        resize();
+      });
+      resize();
+      draw();
+    })();
+  </script>
+
+</body>
+</html>
