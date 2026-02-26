@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>DSMR: Depth-Structured Music Recurrence for Full-Piece Symbolic Music Modeling</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Depth-Structured Music Recurrence (DSMR) — Budgeted Recurrent Attention for Full-Piece Symbolic Music Modeling. A training-time design that learns from complete compositions end to end.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900"> 
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="css/jquery-ui.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
+  <link rel="stylesheet" href="css/aos.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .key-results-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+    .key-results-table th,
+    .key-results-table td {
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .key-results-table th {
+      background-color: #3ca59d;
+      color: #fff;
+      font-weight: 400;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+    }
+    .key-results-table tr:nth-child(even) {
+      background-color: #f8f9fa;
+    }
+    .key-results-table tr:hover {
+      background-color: #e9f7f6;
+    }
+    .key-results-table .highlight-row {
+      font-weight: 600;
+      background-color: #e0f5f3;
+    }
+    .abstract-text {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #555;
+    }
+    .contribution-item {
+      padding: 15px 20px;
+      margin-bottom: 12px;
+      border-left: 4px solid #3ca59d;
+      background: #f9fffe;
+      border-radius: 0 4px 4px 0;
+    }
+    .contribution-item strong {
+      color: #3ca59d;
+    }
+    .section-divider {
+      width: 60px;
+      height: 3px;
+      background: #3ca59d;
+      margin: 0 auto 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="site-wrap">
+    <header class="site-navbar py-4" role="banner">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-4 d-flex align-items-center">
+            <a href="index.html" class="d-flex align-items-center" style="text-decoration: none; color: inherit;">
+              <img src="images/logo.png" alt="Logo" style="height: 120px; margin-right: 10px;">
+              <span class="h2 site-logo" style="white-space: normal;">Research Paper Demo</span>
+            </a>
+          </div>          
+          <div class="col-8">
+            <nav class="site-navigation position-relative text-right text-md-right" role="navigation">
+              <ul class="site-menu js-clone-nav d-none d-lg-block">
+                <li class="active"><a href="index.html">Home</a></li>
+                <li><a href="https://arxiv.org/abs/2411.08307">Paper</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container pt-5 hero">
+      <div class="row align-items-center text-center text-md-left">
+	    <div class="col-12" style="display: inline-block; width: 100%;">
+	      <h1 class="mb-3 display-3" style="overflow: hidden; text-align: center;">
+	        Depth-Structured Music Recurrence: Budgeted Recurrent Attention for Full-Piece Symbolic Music Modeling
+	      </h1>
+	    </div>
+        <div class="col-lg-5">
+          <p class="abstract-text">We introduce <strong>Depth-Structured Music Recurrence (DSMR)</strong>, a training-time design that learns from complete compositions end to end by streaming each piece left-to-right with stateful recurrent attention and distributing layer-wise memory horizons under a fixed recurrent-state budget.</p>
+          <p class="abstract-text">Our main instantiation, <strong>two-scale DSMR</strong>, assigns long history windows to lower layers and a uniform short window to the remaining layers. On MAESTRO, two-scale DSMR matches a full-memory recurrent reference in perplexity (<strong>5.96 vs. 5.98</strong>) while using approximately <strong>59% less GPU memory</strong> and achieving roughly <strong>36% higher throughput</strong>.</p>
+          <p>All music pieces are presented in generation order with no selection or filtering. Click <a href="https://soundcloud.com/perceivers/sets/perceivers-demo-music">here</a> to listen to more demo music.</p>
+        </div>
+        <div class="col-lg-7">
+          <img src="images/1x/asset-1.png" alt="DSMR Architecture" class="img-fluid">    
+        </div>
+      </div>
+    </div>
+
+    <!-- Key Results Section -->
+    <div class="site-section" style="padding-top: 2em;">
+      <div class="container">
+        <div class="row mb-4">
+          <div class="col-md-12 text-center">
+            <h2 class="font-weight-bold text-black">Key Results</h2>
+            <div class="section-divider"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <h4 class="mb-3" style="color: #3ca59d;">Contributions</h4>
+            <div class="contribution-item">
+              <strong>1.</strong> DSMR framework — end-to-end full-piece training via streaming recurrence with layer-wise horizon budgeting.
+            </div>
+            <div class="contribution-item">
+              <strong>2.</strong> Two-scale DSMR — long horizons in lower layers, uniform short horizons elsewhere, keeping total budget fixed.
+            </div>
+            <div class="contribution-item">
+              <strong>3.</strong> Variant analyses — depth-wise redistribution outperforms binary layer selection; gate-derived rankings do not reliably transfer.
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <h4 class="mb-3" style="color: #3ca59d;">Efficiency Comparison</h4>
+            <div style="overflow-x: auto;">
+              <table class="key-results-table">
+                <thead>
+                  <tr>
+                    <th>Setting</th>
+                    <th>Peak Mem</th>
+                    <th>Tokens/s</th>
+                    <th>Best PPL</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Full-memory reference</td>
+                    <td>15.5 GB</td>
+                    <td>7,618</td>
+                    <td>5.98</td>
+                  </tr>
+                  <tr>
+                    <td>Perceiver AR-like</td>
+                    <td>6.3 GB</td>
+                    <td>11,753</td>
+                    <td>6.54</td>
+                  </tr>
+                  <tr>
+                    <td>Selective retention (sliding)</td>
+                    <td>7.8 GB</td>
+                    <td>11,061</td>
+                    <td>6.51</td>
+                  </tr>
+                  <tr>
+                    <td>Progressive Descending</td>
+                    <td>7.1 GB</td>
+                    <td>10,556</td>
+                    <td>6.33</td>
+                  </tr>
+                  <tr>
+                    <td>Progressive Ascending</td>
+                    <td>7.0 GB</td>
+                    <td>10,540</td>
+                    <td>6.15</td>
+                  </tr>
+                  <tr>
+                    <td>Reverse Two-scale</td>
+                    <td>6.3 GB</td>
+                    <td>10,324</td>
+                    <td>6.01</td>
+                  </tr>
+                  <tr class="highlight-row">
+                    <td><strong>Two-scale DSMR (final)</strong></td>
+                    <td><strong>6.3 GB</strong></td>
+                    <td><strong>10,339</strong></td>
+                    <td><strong>5.96</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Demos Section -->
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="featured-user mb-5 mb-lg-0">
+              <h3 class="mb-4">Authors</h3>
+              <ul class="list-unstyled">
+                <li>
+                  <a href="https://www.linkedin.com/in/lukeyi" class="d-flex align-items-center">
+                    <img src="images/yungang_yi.png" alt="Yungang Yi" class="img-fluid mr-2" style="width: 40px; height: 40px; border-radius: 50%;">
+                    <div class="podcaster">
+                      <span class="d-block">Yungang Yi</span>
+                      <span class="small">Author &amp; Researcher</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://academics.aut.ac.nz/weihua.li" class="d-flex align-items-center">
+                    <img src="images/weihua_li.png" alt="Dr. Weihua Li" class="img-fluid mr-2" style="width: 40px; height: 40px; border-radius: 50%;">
+                    <div class="podcaster">
+                      <span class="d-block">Dr. Weihua Li</span>
+                      <span class="small">Author &amp; Supervisor</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://academics.aut.ac.nz/matthew.kuo" class="d-flex align-items-center">
+                    <img src="images/matthew_kuo.png" alt="Dr. Matthew Kuo" class="img-fluid mr-2" style="width: 40px; height: 40px; border-radius: 50%;">
+                    <div class="podcaster">
+                      <span class="d-block">Dr. Matthew Kuo</span>
+                      <span class="small">Author &amp; Supervisor</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="d-flex align-items-center">
+                    <img src="images/catherine_shi.png" alt="Catherine Shi" class="img-fluid mr-2" style="width: 40px; height: 40px; border-radius: 50%;">
+                    <div class="podcaster">
+                      <span class="d-block">Catherine Shi</span>
+                      <span class="small">Author</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://discover.utas.edu.au/Quan.Bai" class="d-flex align-items-center">
+                    <img src="images/quan_bai.png" alt="Dr. Quan Bai" class="img-fluid mr-2" style="width: 40px; height: 40px; border-radius: 50%;">
+                    <div class="podcaster">
+                      <span class="d-block">Dr. Quan Bai</span>
+                      <span class="small">Author &amp; Advisor</span>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-9">
+            <div class="d-block d-md-flex podcast-entry bg-white mb-5" data-aos="fade-up">
+              <div class="image" style="background-image: url('images/session_1.png');"></div>
+              <div class="text">
+                <h3 class="font-weight-light" style="color: #3ca59d;">Section 1: Full-Memory Reference (TXL-style)</h3>
+                <div class="text-white mb-3">
+                  <span class="text-black-opacity-05">
+                    <small>Dataset: MAESTRO <span class="sep">/</span> Context Length: 32,768 <span class="sep">/</span> Recurrence: Full-memory <span class="sep">/</span> All 18 layers</small>
+                  </span>
+                </div>
+                <div class="player">
+                  <audio controls preload="none" style="max-width: 100%;"><source src="demos/section1/sample1.mp3" type="audio/mpeg"></audio><br>
+                  <audio controls preload="none" style="max-width: 100%;"><source src="demos/section1/sample2.mp3" type="audio/mpeg"></audio><br>
+                  <audio controls preload="none" style="max-width: 100%;"><source src="demos/section1/sample3.mp3" type="audio/mpeg"></audio><br>
+                  <audio controls preload="none" style="max-width: 100%;"><source src="demos/section1/sample4.mp3" type="audio/mpeg"></audio><br>
+                </div>
+              </div>
+            </div>
+            
+            <div class="d-block d-md-flex podcast-entry bg-white mb-5" data-aos="fade-up">
+              <div class="image" style="background-image: url('images/session_2.png');"></div>
+              <div class="text">
+                <h3 class="font-weight-light" style="color: #3ca59d;">Section 2: Two-Scale DSMR (Long Lower + Uniform Short)</h3>
+                <div class="text-white mb-3">
+                  <span class="text-black-opacity-05">
+                    <small>Dataset: MAESTRO <span class="sep">/</span> Context Length: 32,768 <span class="sep">/</span> Recurrence: Two-scale <span class="sep">/</span> L<sub>long</sub>=1, m<sub>long</sub>=31744</small>
+                  </span>
+                </div>
+                <div class="player">
+                  <audio controls preload="none" style="max-width: 100%;"><source src="demos/section2/sample1.mp3" type="audio/mpeg"></audio><br>
+                  <audio controls preload="none" style="max-width: 100%;"><source src="demos/section2/sample2.mp3" type="audio/mpeg"></audio><br>
+                  <audio controls preload="none" style="max-width: 100%;"><source src="demos/section2/sample3.mp3" type="audio/mpeg"></audio><br>
+                  <audio controls preload="none" style="max-width: 100%;"><source src="demos/section2/sample4.mp3" type="audio/mpeg"></audio><br>
+                </div>
+              </div>
+            </div>
+            
+            <div class="d-block d-md-flex podcast-entry bg-white mb-5" data-aos="fade-up">
+              <div class="image" style="background-image: url('images/session_3.png');"></div>
+              <div class="text">
+                <h3 class="font-weight-light" style="color: #3ca59d;">Section 3: Selective Retention DSMR (Binary-Horizon Variants)</h3>
+                <div class="text-white mb-3">
+                  <span class="text-black-opacity-05">
+                    <small>Dataset: MAESTRO <span class="sep">/</span> Context Length: 32,768 <span class="sep">/</span> Recurrence: Selective retention <span class="sep">/</span> B=3 layers</small>
+                  </span>
+                </div>
+                <div class="player">
+                  <audio controls preload="none" style="max-width: 100%;"><source src="demos/section3/sample1.mp3" type="audio/mpeg"></audio><br>
+                  <audio controls preload="none" style="max-width: 100%;"><source src="demos/section3/sample2.mp3" type="audio/mpeg"></audio><br>
+                  <audio controls preload="none" style="max-width: 100%;"><source src="demos/section3/sample3.mp3" type="audio/mpeg"></audio><br>
+                  <audio controls preload="none" style="max-width: 100%;"><source src="demos/section3/sample4.mp3" type="audio/mpeg"></audio><br>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Abstract Section -->
+    <div class="site-section" style="background: #f9fffe;">
+      <div class="container">
+        <div class="row mb-4">
+          <div class="col-md-12 text-center">
+            <h2 class="font-weight-bold text-black">Abstract</h2>
+            <div class="section-divider"></div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <p class="abstract-text">Long-context modeling is essential for symbolic music generation, since motif repetition and developmental variation can span thousands of musical events, yet practical workflows frequently rely on resource-limited hardware. We introduce <strong>Depth-Structured Music Recurrence (DSMR)</strong>, a training-time design that learns from complete compositions end to end by streaming each piece left-to-right with stateful recurrent attention and distributing layer-wise memory horizons under a fixed recurrent-state budget.</p>
+            <p class="abstract-text">Our main instantiation, <strong>two-scale DSMR</strong>, assigns long history windows to lower layers and a uniform short window to the remaining layers. On the MAESTRO piano performance dataset, two-scale DSMR matches a full-memory recurrent reference in perplexity (5.96 vs. 5.98) while using approximately 59% less GPU memory and achieving roughly 36% higher throughput.</p>
+            <p class="abstract-text">Variant analyses further show strong layer substitutability under binary-horizon schedules: performance depends primarily on total allocated memory rather than which layers carry it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Citation Section -->
+    <div class="site-section bg-light block-13">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-12 text-center">
+            <h2 class="font-weight-bold text-black">Citing This Paper</h2>
+          </div>
+        </div>
+        <div class="text-center p-3 p-md-5 bg-white">
+          <p>To cite this paper, please use the following format:</p>
+          <pre style="text-align: left; display: inline-block;">
+@inproceedings{yi2025dsmr,
+  author={Yi, Yungang and Li, Weihua and Kuo, Matthew M.Y. and Shi, Catherine and Bai, Quan},
+  title={Depth-Structured Music Recurrence: Budgeted Recurrent Attention for Full-Piece Symbolic Music Modeling},
+  year={2025},
+  keywords={Symbolic music generation, Long-context modeling, Recurrent attention,
+            KV cache budgeting, Streaming training, Depth-Structured Music Recurrence}}
+          </pre>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <p>&copy; 2025 All rights reserved | Based on a template by Colorlib</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/google-analytics.js"></script>
+  <script src="js/audio-control.js"></script>
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/jquery.countdown.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/mediaelement-and-player.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
