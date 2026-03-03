@@ -96,7 +96,7 @@
             <nav class="site-navigation position-relative text-right text-md-right" role="navigation">
               <ul class="site-menu js-clone-nav d-none d-lg-block">
                 <li class="active"><a href="index.html">Home</a></li>
-                <li><a href="https://arxiv.org/abs/2411.08307">Paper</a></li>
+                <li><a href="https://arxiv.org/abs/2602.19816">Paper</a></li>
               </ul>
             </nav>
           </div>
@@ -105,13 +105,13 @@
     </header>
 
     <div class="container pt-5 hero">
-      <div class="row align-items-center text-center text-md-left">
+      <div class="row align-items-start text-center text-md-left">
         <div class="col-12" style="display: inline-block; width: 100%;">
           <h1 class="mb-3 display-3" style="overflow: hidden; text-align: center;">
             Depth-Structured Music Recurrence: Budgeted Recurrent Attention for Full-Piece Symbolic Music Modeling
           </h1>
         </div>
-        <div class="col-lg-5">
+        <div class="col-lg-6">
           <p class="abstract-text">We introduce <strong>Depth-Structured Music Recurrence (DSMR)</strong>, a
             training-time design that learns from complete compositions end to end by streaming each piece left-to-right
             with stateful recurrent attention and distributing layer-wise memory horizons under a fixed recurrent-state
@@ -121,12 +121,9 @@
             full-memory recurrent reference in perplexity (<strong>5.96 vs. 5.98</strong>) while using approximately
             <strong>59% less GPU memory</strong> and achieving roughly <strong>36% higher throughput</strong>.
           </p>
-          <p>All music pieces are presented in generation order with no selection or filtering. Click <a
-              href="https://soundcloud.com/perceivers/sets/perceivers-demo-music">here</a> to listen to more demo music.
-          </p>
         </div>
-        <div class="col-lg-7">
-          <img src="images/1x/asset-1.png" alt="DSMR Architecture" class="img-fluid">
+        <div class="col-lg-6">
+          <img src="images/dsm.png" alt="DSMR Architecture" class="img-fluid">
         </div>
       </div>
     </div>
@@ -142,18 +139,22 @@
         </div>
         <div class="row">
           <div class="col-lg-6">
-            <h4 class="mb-3" style="color: #3ca59d;">Contributions</h4>
+            <h4 class="mb-3" style="color: #3ca59d;">Highlights</h4>
             <div class="contribution-item">
-              <strong>1.</strong> DSMR framework — end-to-end full-piece training via streaming recurrence with
-              layer-wise horizon budgeting.
+              <span style="color: #3ca59d;">&bull;</span> Standard fixed-length truncation training breaks long-range
+              dependencies in full-piece symbolic music.
             </div>
             <div class="contribution-item">
-              <strong>2.</strong> Two-scale DSMR — long horizons in lower layers, uniform short horizons elsewhere,
-              keeping total budget fixed.
+              <span style="color: #3ca59d;">&bull;</span> DSMR enables end-to-end full-piece training under limited
+              hardware via budgeted recurrent attention.
             </div>
             <div class="contribution-item">
-              <strong>3.</strong> Variant analyses — depth-wise redistribution outperforms binary layer selection;
-              gate-derived rankings do not reliably transfer.
+              <span style="color: #3ca59d;">&bull;</span> Two-scale DSMR matches full-memory perplexity with ~59% less
+              GPU memory and ~36% higher throughput.
+            </div>
+            <div class="contribution-item">
+              <span style="color: #3ca59d;">&bull;</span> Variant analyses show strong layer substitutability and that
+              depth-wise horizon redistribution is most effective at matched budgets.
             </div>
           </div>
           <div class="col-lg-6">
@@ -281,119 +282,100 @@
             </div>
           </div>
 
-          <div class="col-lg-9">
-            <div class="d-block d-md-flex podcast-entry bg-white mb-5" data-aos="fade-up">
-              <div class="image" style="background-image: url('images/session_1.png');"></div>
-              <div class="text">
-                <h3 class="font-weight-light" style="color: #3ca59d;">Section 1: Full-Memory Reference (TXL-style)</h3>
-                <div class="text-white mb-3">
-                  <span class="text-black-opacity-05">
-                    <small>Dataset: MAESTRO <span class="sep">/</span> Context Length: 32,768 <span class="sep">/</span>
-                      Recurrence: Full-memory <span class="sep">/</span> All 18 layers</small>
-                  </span>
-                </div>
-                <div class="player">
-                  <audio controls preload="none" style="max-width: 100%;">
-                    <source src="demos/section1/sample1.mp3" type="audio/mpeg">
-                  </audio><br>
-                  <audio controls preload="none" style="max-width: 100%;">
-                    <source src="demos/section1/sample2.mp3" type="audio/mpeg">
-                  </audio><br>
-                  <audio controls preload="none" style="max-width: 100%;">
-                    <source src="demos/section1/sample3.mp3" type="audio/mpeg">
-                  </audio><br>
-                  <audio controls preload="none" style="max-width: 100%;">
-                    <source src="demos/section1/sample4.mp3" type="audio/mpeg">
-                  </audio><br>
-                </div>
-              </div>
+          <div class="col-lg-8 offset-lg-1">
+            <div class="mb-5 text-center" data-aos="fade-up">
+              <h3 class="mb-4 text-left" style="color: #3ca59d;">Experimental Results</h3>
+              <img src="images/ppl_memory_all_models.png" alt="Experimental Results" class="img-fluid"
+                style="border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-width: 100%;">
             </div>
-
-            <div class="d-block d-md-flex podcast-entry bg-white mb-5" data-aos="fade-up">
-              <div class="image" style="background-image: url('images/session_2.png');"></div>
-              <div class="text">
-                <h3 class="font-weight-light" style="color: #3ca59d;">Section 2: Two-Scale DSMR (Long Lower + Uniform
-                  Short)</h3>
-                <div class="text-white mb-3">
-                  <span class="text-black-opacity-05">
-                    <small>Dataset: MAESTRO <span class="sep">/</span> Context Length: 32,768 <span class="sep">/</span>
-                      Recurrence: Two-scale <span class="sep">/</span> L<sub>long</sub>=1,
-                      m<sub>long</sub>=31744</small>
-                  </span>
-                </div>
-                <div class="player">
-                  <audio controls preload="none" style="max-width: 100%;">
-                    <source src="demos/section2/sample1.mp3" type="audio/mpeg">
-                  </audio><br>
-                  <audio controls preload="none" style="max-width: 100%;">
-                    <source src="demos/section2/sample2.mp3" type="audio/mpeg">
-                  </audio><br>
-                  <audio controls preload="none" style="max-width: 100%;">
-                    <source src="demos/section2/sample3.mp3" type="audio/mpeg">
-                  </audio><br>
-                  <audio controls preload="none" style="max-width: 100%;">
-                    <source src="demos/section2/sample4.mp3" type="audio/mpeg">
-                  </audio><br>
-                </div>
-              </div>
-            </div>
-
-            <div class="d-block d-md-flex podcast-entry bg-white mb-5" data-aos="fade-up">
-              <div class="image" style="background-image: url('images/session_3.png');"></div>
-              <div class="text">
-                <h3 class="font-weight-light" style="color: #3ca59d;">Section 3: Selective Retention DSMR
-                  (Binary-Horizon Variants)</h3>
-                <div class="text-white mb-3">
-                  <span class="text-black-opacity-05">
-                    <small>Dataset: MAESTRO <span class="sep">/</span> Context Length: 32,768 <span class="sep">/</span>
-                      Recurrence: Selective retention <span class="sep">/</span> B=3 layers</small>
-                  </span>
-                </div>
-                <div class="player">
-                  <audio controls preload="none" style="max-width: 100%;">
-                    <source src="demos/section3/sample1.mp3" type="audio/mpeg">
-                  </audio><br>
-                  <audio controls preload="none" style="max-width: 100%;">
-                    <source src="demos/section3/sample2.mp3" type="audio/mpeg">
-                  </audio><br>
-                  <audio controls preload="none" style="max-width: 100%;">
-                    <source src="demos/section3/sample3.mp3" type="audio/mpeg">
-                  </audio><br>
-                  <audio controls preload="none" style="max-width: 100%;">
-                    <source src="demos/section3/sample4.mp3" type="audio/mpeg">
-                  </audio><br>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Abstract Section -->
-    <div class="site-section" style="background: #f9fffe;">
+    <!-- Highlights Section -->
+    <div class="site-section bg-light">
       <div class="container">
-        <div class="row mb-4">
+        <div class="row mb-5">
           <div class="col-md-12 text-center">
-            <h2 class="font-weight-bold text-black">Abstract</h2>
+            <h2 class="font-weight-bold text-black">Deep Analysis & Applications</h2>
             <div class="section-divider"></div>
           </div>
         </div>
-        <div class="row justify-content-center">
-          <div class="col-lg-10">
-            <p class="abstract-text">Long-context modeling is essential for symbolic music generation, since motif
-              repetition and developmental variation can span thousands of musical events, yet practical workflows
-              frequently rely on resource-limited hardware. We introduce <strong>Depth-Structured Music Recurrence
-                (DSMR)</strong>, a training-time design that learns from complete compositions end to end by streaming
-              each piece left-to-right with stateful recurrent attention and distributing layer-wise memory horizons
-              under a fixed recurrent-state budget.</p>
-            <p class="abstract-text">Our main instantiation, <strong>two-scale DSMR</strong>, assigns long history
-              windows to lower layers and a uniform short window to the remaining layers. On the MAESTRO piano
-              performance dataset, two-scale DSMR matches a full-memory recurrent reference in perplexity (5.96 vs.
-              5.98) while using approximately 59% less GPU memory and achieving roughly 36% higher throughput.</p>
-            <p class="abstract-text">Variant analyses further show strong layer substitutability under binary-horizon
-              schedules: performance depends primarily on total allocated memory rather than which layers carry it.</p>
+
+        <!-- Key Metrics Cards -->
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-4 mb-4">
+            <div class="p-4 bg-white text-center"
+              style="border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid #3ca59d; height: 100%;">
+              <div class="display-4 font-weight-bold mb-2" style="color: #3ca59d;">5.96</div>
+              <h4 class="h5 mb-3 text-black">Matching Perplexity</h4>
+              <p class="text-muted small mb-0 text-left">Two-scale DSMR achieves 5.96 PPL on MAESTRO, matching the 5.98
+                PPL of the
+                full-memory recurrent reference model.</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="p-4 bg-white text-center"
+              style="border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid #3ca59d; height: 100%;">
+              <div class="display-4 font-weight-bold mb-2" style="color: #3ca59d;">59%</div>
+              <h4 class="h5 mb-3 text-black">Less GPU Memory</h4>
+              <p class="text-muted small mb-0 text-left">By budgeting the recurrent state across layers, it reduces peak
+                memory
+                usage from 15.5 GB to just 6.3 GB.</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="p-4 bg-white text-center"
+              style="border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid #3ca59d; height: 100%;">
+              <div class="display-4 font-weight-bold mb-2" style="color: #3ca59d;">36%</div>
+              <h4 class="h5 mb-3 text-black">Higher Throughput</h4>
+              <p class="text-muted small mb-0 text-left">The streamlined attention mechanism enables faster processing,
+                increasing
+                throughput to 10,339 tokens per second.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+            <div class="text-center px-4">
+              <span class="icon-warning display-4 text-primary mb-3 d-block" style="color: #3ca59d !important;"></span>
+              <h3 class="h4" style="color: #3ca59d;">The Challenge</h3>
+              <p class="text-left">Traditional Transformers scale quadratically with sequence length. Modeling full
+                pieces spanning
+                thousands of events is computationally prohibitive for resource-limited devices, often forcing existing
+                solutions to truncate context.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+            <div class="text-center px-4">
+              <span class="icon-gears display-4 text-primary mb-3 d-block" style="color: #3ca59d !important;"></span>
+              <h3 class="h4" style="color: #3ca59d;">The DSMR Solution</h3>
+              <p class="text-left">DSMR streams compositions left-to-right via Transformer-XL recurrence. It uses
+                layer-wise
+                memory-horizon scheduling to budget recurrent KV states across depth, achieving global coherence without
+                increasing compute depth.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+            <div class="text-center px-4">
+              <span class="icon-line-chart display-4 text-primary mb-3 d-block"
+                style="color: #3ca59d !important;"></span>
+              <h3 class="h4" style="color: #3ca59d;">Efficiency Gains</h3>
+              <p class="text-left">Two-scale DSMR matches full-attention perplexity but uses over 50% less GPU memory
+                and improves
+                training speed, making long-context symbolic music modeling fully feasible on consumer-grade GPUs.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+            <div class="text-center px-4">
+              <span class="icon-music display-4 text-primary mb-3 d-block" style="color: #3ca59d !important;"></span>
+              <h3 class="h4" style="color: #3ca59d;">Real-World Apps</h3>
+              <p class="text-left">These capabilities lower the barrier for deploying advanced music AI in
+                creator-centric workflows,
+                enabling interactive composition tools, rehearsal assistance, and real-time improvisation.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -410,12 +392,17 @@
         <div class="text-center p-3 p-md-5 bg-white">
           <p>To cite this paper, please use the following format:</p>
           <pre style="text-align: left; display: inline-block;">
-@inproceedings{yi2025dsmr,
-  author={Yi, Yungang and Li, Weihua and Kuo, Matthew M.Y. and Shi, Catherine and Bai, Quan},
-  title={Depth-Structured Music Recurrence: Budgeted Recurrent Attention for Full-Piece Symbolic Music Modeling},
-  year={2025},
-  keywords={Symbolic music generation, Long-context modeling, Recurrent attention,
-            KV cache budgeting, Streaming training, Depth-Structured Music Recurrence}}
+@misc{yi2026depthstructuredmusicrecurrence,
+      title={Depth-Structured Music Recurrence: Budgeted Recurrent Attention for Full-Piece Symbolic Music Modeling}, 
+      author={Yungang Yi and Weihua Li and Matthew Kuo and Catherine Shi and Quan Bai},
+      year={2026},
+      eprint={2602.19816},
+      archivePrefix={arXiv},
+      primaryClass={cs.SD},
+      url={https://arxiv.org/abs/2602.19816}, 
+      keywords={Symbolic music generation, Long-context modeling, Recurrent attention, Streaming training, Depth-Structured Music Recurrence},
+      doi={https://doi.org/10.48550/arXiv.2602.19816}
+}
           </pre>
         </div>
       </div>
